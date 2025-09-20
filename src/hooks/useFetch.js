@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-export function useFetch(){
+export function useFetch1(){
     const [post, setPost]= useState({});
   async function getposts(){
     const response =await fetch("https://jsonplaceholder.typicode.com/posts/1")
@@ -10,4 +10,16 @@ export function useFetch(){
     getposts();
   },[])
   return post;
+}
+export function useFetch(url){
+    const[finalData ,setFinalData]= useState({});
+    async function getposts(){
+        const response =await fetch(url)
+        const json = await response.json();
+        setFinalData(json);
+    }
+  useEffect(()=>{
+    getposts();
+  },[])
+  return finalData;
 }
