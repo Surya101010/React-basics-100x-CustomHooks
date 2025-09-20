@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useFetch,useFetch1 } from './hooks/useFetch'
+import { useFetch } from './hooks/useFetch'
 function App() {
-  const post= useFetch1();
-  const post1=useFetch("https://jsonplaceholder.typicode.com/posts/1")
+  const [number,setNumber] = useState(1);
+  const post=useFetch("https://jsonplaceholder.typicode.com/posts/" +number )
   return (
-    <><div>
-      {post.title}
-    </div>
-    <div>{post1.body}</div>
     <>
-    {JSON.stringify(post1)}
-    </>
+    <button onClick={()=> setNumber(1)}>post 1</button>
+    <button onClick={()=> setNumber(2)}>post 2</button>
+    <button onClick={()=> setNumber(3)}>post 3</button>
+    {JSON.stringify(post)}
      </>
   )
 }
